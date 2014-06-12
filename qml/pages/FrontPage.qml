@@ -95,7 +95,10 @@ Page {
                     anchors.fill: parent
                     selectByMouse: true
                     font.pixelSize: Theme.fontSizeLarge
-                    onAccepted: pageStack.push(Qt.resolvedUrl("SearchResults.qml"), {searchWords: searchWords.text, apiKey: storage.get("api_key")})
+                    onAccepted: pageStack.push(Qt.resolvedUrl("SearchResults.qml"), {
+                                                   searchWords: searchWords.text.replace(/^\s+|\s+$/g, "").replace(/\s+/g, " AND "),
+                                                   apiKey: storage.get("api_key")
+                                               })
                 }
             }
         }
