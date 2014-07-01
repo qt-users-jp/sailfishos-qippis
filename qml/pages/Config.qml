@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Page {
+Dialog {
     id: page
 
     Storage {
@@ -14,34 +14,41 @@ Page {
 
         width: page.width
         spacing: Theme.paddingLarge
-        PageHeader {
-            title: "Settings"
+        DialogHeader {
+            title: "Accept"
         }
         Label {
             x: Theme.paddingLarge
-            text: qsTr("API Key")
+            text: qsTr("API Key Setting")
             color: Theme.secondaryHighlightColor
             font.pixelSize: Theme.fontSizeExtraLarge
         }
-        Rectangle {
-            id: inputSpace
-            x: Theme.paddingLarge
+        TextField {
+            id: keyStrings
             width: column.width - ( Theme.paddingLarge * 2)
-            height: Theme.fontSizeLarge + 5
-            color: "white"
-            TextInput {
-                id: keyStrings
-                anchors.fill: parent
-                text: storage.get("api_key")
-                width: inputSpace.width
-                font.pixelSize: Theme.fontSizeLarge
-                clip: true
-                selectByMouse: true
-                onAccepted: {
-                    storage.set("api_key", keyStrings.text)
-                    pageStack.pop()
-                }
-            }
+            font.pixelSize: Theme.fontSizeLarge
+            placeholderText: "API Key"
+            text: storage.get("api_key")
+            clip: true
+        }
+        Text {
+            width: column.width
+            color: Theme.primaryColor
+            font.pixelSize: Theme.fontSizeMedium
+            textFormat: Text.RichText
+            wrapMode: Text.WordWrap
+            text: "You must get an API Key to use BreweryDB&apos;s APIs.<br>" +
+                  "Please sign up at below URL if you do not have an account of BreweryDB.com" +
+                  "<br>" +
+                  "<a href=\"https://www.brewerydb.com/auth/signup\"> https://www.brewerydb.com/auth/signup </a><br>" +
+                  "<br>" +
+                  "You can get an API Key with access limit (400times/day) free.<br>"
+        }
+    }
+
+    onDone: {
+        if (result == DialogResult.Accepted) {
+            storage.set("api_key", keyStrings.text)
         }
     }
 
