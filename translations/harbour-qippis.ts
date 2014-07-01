@@ -21,7 +21,7 @@
     <name>Config</name>
     <message>
         <location filename="../qml/pages/Config.qml" line="22"/>
-        <source>API Key</source>
+        <source>API Key Setting</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

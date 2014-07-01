@@ -83,23 +83,27 @@ Page {
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
-            Rectangle {
-                id: inputSpace
+            TextField {
                 x: Theme.paddingLarge
                 width: column.width - ( Theme.paddingLarge * 2)
-                height: Theme.fontSizeLarge + 5
-                color: "white"
-                TextInput {
-                    id: searchWords
-                    text: "Name of Beer"
-                    anchors.fill: parent
-                    selectByMouse: true
-                    font.pixelSize: Theme.fontSizeLarge
-                    onAccepted: pageStack.push(Qt.resolvedUrl("SearchResults.qml"), {
-                                                   searchWords: searchWords.text.replace(/^\s+|\s+$/g, "").replace(/\s+/g, " AND "),
-                                                   apiKey: storage.get("api_key")
-                                               })
-                }
+                id: searchWords
+                placeholderText: "Name of Beer"
+                font.pixelSize: Theme.fontSizeLarge
+                clip: true
+            }
+            Button {
+                id: searchButton
+                x: page.width - ( searchButton.width + 20 )
+                text: "Search!"
+                onClicked: if (storage.get("api_key") === "") {
+                               pageStack.push(Qt.resolvedUrl("Config.qml"));
+                           } else {
+                               pageStack.push(Qt.resolvedUrl("SearchResults.qml"), {
+                                                  searchWords: searchWords.text.replace(/^\s+|\s+$/g, "").replace(/\s+/g, " AND "),
+                                                  pageNumber: 1,
+                                                  apiKey: storage.get("api_key")
+                                              })
+                           }
             }
         }
     }
