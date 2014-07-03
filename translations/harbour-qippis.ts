@@ -46,8 +46,18 @@
 <context>
     <name>SearchResults</name>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="40"/>
-        <source>Search Results</source>
+        <location filename="../qml/pages/SearchResults.qml" line="157"/>
+        <source>Previous Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchResults.qml" line="173"/>
+        <source>Next Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchResults.qml" line="197"/>
+        <source>Page: %1/%2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
