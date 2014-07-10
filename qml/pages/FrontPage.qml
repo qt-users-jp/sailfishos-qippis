@@ -48,18 +48,9 @@ Page {
                 text: "About Qippis"
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutQippis.qml"))
             }
-
             MenuItem {
                 text: qsTr("Settings")
                 onClicked: pageStack.push(Qt.resolvedUrl("Config.qml"))
-            }
-//            MenuItem {
-//                text: qsTr("Categories of Beer")
-//                onClicked: pageStack.push(Qt.resolvedUrl("CategoryList.qml"))
-//            }
-            MenuItem {
-                text: qsTr("Styles of Beer")
-                onClicked: pageStack.push(Qt.resolvedUrl("StyleList.qml"), {apiKey: storage.get("api_key")})
             }
             MenuItem {
                 text: "Favorites"

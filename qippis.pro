@@ -20,13 +20,11 @@ OTHER_FILES += \
     qml/cover/CoverPage.qml \
     translations/*.ts \
     qml/pages/BeerDescription.qml \
-    qml/pages/CategoryList.qml \
     qml/pages/Config.qml \
     qml/pages/FrontPage.qml \
     qml/pages/SearchResults.qml \
     qml/pages/Storage.qml \
     qml/pages/StyleDescription.qml \
-    qml/pages/StyleList.qml \
     qml/images/noImage.jpg \
     rpm/harbour-qippis.changes.in \
     rpm/harbour-qippis.yaml \
