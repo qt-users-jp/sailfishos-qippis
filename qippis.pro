@@ -9,12 +9,16 @@
 #   - icon definition filename in desktop file must be changed
 #   - translation filenames have to be changed
 
+# Twitter4QML
+include(./twitter4qml/twitter4qml.pri)
+
 # The name of your application
 TARGET = harbour-qippis
 
 CONFIG += sailfishapp
 
-SOURCES += src/qippis.cpp
+SOURCES += src/qippis.cpp \
+    src/twitter4qml.cpp
 
 OTHER_FILES += \
     qml/cover/CoverPage.qml \
@@ -32,9 +36,14 @@ OTHER_FILES += \
     qml/harbour-qippis.qml \
     qml/pages/AboutQippis.qml \
     qml/pages/Favorite.qml \
-    qml/pages/FavoritesList.qml
+    qml/pages/FavoritesList.qml \
+    qml/pages/Authentication.qml \
+    qml/pages/TweetBeer.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
+
+HEADERS += \
+    src/twitter4qml.h
 

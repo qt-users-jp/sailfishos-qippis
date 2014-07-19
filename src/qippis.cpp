@@ -33,6 +33,7 @@
 #endif
 
 #include <sailfishapp.h>
+#include "twitter4qml.h"
 
 
 int main(int argc, char *argv[])
@@ -46,6 +47,7 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
+    Twitter4QML twitter4qml;
     return SailfishApp::main(argc, argv);
 }
 

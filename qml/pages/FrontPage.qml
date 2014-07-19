@@ -53,6 +53,10 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("Config.qml"))
             }
             MenuItem {
+                text: qsTr("Twitter Account")
+                onClicked: pageStack.push(Qt.resolvedUrl("Authentication.qml"))
+            }
+            MenuItem {
                 text: "Favorites"
                 onClicked: pageStack.push(Qt.resolvedUrl("FavoritesList.qml"), {apiKey: storage.get("api_key")})
             }

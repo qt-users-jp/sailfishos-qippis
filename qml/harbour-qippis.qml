@@ -30,12 +30,54 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import Twitter4QML 1.1
 import "pages"
 
 ApplicationWindow
 {
     initialPage: Component { FrontPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
+
+    Storage {
+        id: storage
+        name: "SettingDB"
+    }
+
+    AccountVerifyCredentials {
+        id: verifyCredentials
+    }
+
+    HelpConfiguration {
+        id: configuration
+    }
+
+    OAuth {
+        id: oauth
+        consumer_key: "kOFlNssuYl76Gb2z7xHIuepjC"
+        consumer_secret: "uKGyTAaOkpezry7qOuF3wtH0Q2I8fyv3IiFNp1Nkurx3NliAoP"
+        token: storage.get('token')? storage.get('token'):""
+        token_secret: storage.get('tokenSecret')? storage.get('tokenSecret'):""
+        user_id: storage.get('userId')? storage.get('userId'):""
+        screen_name: storage.get('screenName')? storage.get('screenName'):""
+        onTokenChanged: storage.set('token', token)
+        onToken_secretChanged: storage.set('tokenSecret', token_secret)
+        onUser_idChanged: storage.set('userId', user_id)
+        onScreen_nameChanged: storage.set('screenName', screen_name)
+
+        property bool completed: false
+        onStateChanged: {
+            switch (state) {
+            case OAuth.Authorized:
+                if (completed) {
+                    verifyCredentials.exec()
+                    configuration.exec()
+                }
+                break;
+            case OAuth.Unauthorized:
+                break;
+            }
+        }
+        Component.onCompleted: oauth.completed = true
+    }
+
 }
-
-

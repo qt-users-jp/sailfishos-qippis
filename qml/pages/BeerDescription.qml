@@ -34,10 +34,10 @@ Page {
                 text: "Add to Favorites"
                 onClicked: favorite.set(beerId, beerName, beerIcon, beerLabel, beerDescription, beerAbv, beerIbu, beerSrm, beerOg, categoryName, styleName)
             }
-//            MenuItem {
-//                text: "Favorite Beers"
-//                onClicked: pageStack.push(Qt.resolvedUrl("FavoritesList.qml"))
-//            }
+            MenuItem {
+                text: "Tweet the Beer"
+                onClicked: pageStack.push(Qt.resolvedUrl("TweetBeer.qml"), {beerId: beerId, beerName: beerName})
+            }
         }
 
         Column {
