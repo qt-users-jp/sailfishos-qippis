@@ -63,7 +63,7 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("Authentication.qml"))
             }
             MenuItem {
-                text: "Favorites"
+                text: qsTr("Favorites Beers")
                 onClicked: pageStack.push(Qt.resolvedUrl("FavoritesList.qml"), {apiKey: storage.get("api_key")})
             }
         }

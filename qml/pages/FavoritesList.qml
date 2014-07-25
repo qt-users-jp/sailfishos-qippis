@@ -8,6 +8,8 @@ Page {
         id: favorite
     }
 
+    property int listLength: favorite.getLength()
+
     SilicaListView {
         id: listView
         anchors.fill: parent
@@ -20,6 +22,8 @@ Page {
             id: delegate
 
             Row {
+                x: Theme.paddingLarge
+                spacing: Theme.paddingLarge
                 Image {
                     id: iconImage
                     width: 64
@@ -52,4 +56,11 @@ Page {
                                       })
         }
     }
+
+    Timer {
+        running: page.status === PageStatus.Active
+        interval: 100
+        onTriggered: if (listLength !== favorite.getLength()) pageStack.replace(Qt.resolvedUrl("FavoritesList.qml"));
+    }
+
 }

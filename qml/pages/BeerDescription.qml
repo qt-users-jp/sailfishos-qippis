@@ -20,6 +20,8 @@ Page {
         id: favorite
     }
 
+    property bool favorited: favorite.getName(beerId) ? true : false
+
     SilicaFlickable {
         id: beerInfromation
         anchors.fill: parent
@@ -27,12 +29,7 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: "Remove from Favorites"
-                onClicked: favorite.unset(beerId)
-            }
-            MenuItem {
-                text: "Add to Favorites"
-                onClicked: favorite.set(beerId, beerName, beerIcon, beerLabel, beerDescription, beerAbv, beerIbu, beerSrm, beerOg, categoryName, styleName)
+                id: toggle_fav
             }
             MenuItem {
                 text: "Tweet the Beer"
@@ -187,5 +184,33 @@ Page {
             }
 
         }
+
+        states: [
+            State {
+                name: "favorite"
+                when: !favorited
+                PropertyChanges {
+                    target: toggle_fav
+                    text: "Add to Favorite"
+                    onClicked: {
+                        favorite.set(beerId, beerName, beerIcon, beerLabel, beerDescription, beerAbv, beerIbu, beerSrm, beerOg, categoryName, styleName);
+                        page.favorited = true;
+                    }
+                }
+            },
+            State {
+                name: "unfavorite"
+                when: favorited
+                PropertyChanges {
+                    target: toggle_fav
+                    text: "Remove from Favorite"
+                    onClicked: {
+                        favorite.unset(beerId);
+                        page.favorited = false;
+                    }
+                }
+            }
+
+        ]
     }
 }
