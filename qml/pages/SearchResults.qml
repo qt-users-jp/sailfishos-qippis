@@ -181,6 +181,7 @@ Page {
 
                 Row {
                     x: Theme.paddingLarge
+                    spacing: Theme.paddingLarge
                     Image {
                         id: iconImage
                         width: 64
@@ -195,7 +196,7 @@ Page {
                     Text {
                         font.pixelSize: Theme.fontSizeLarge
                         textFormat: Text.RichText
-                        text: "  " + beerName
+                        text: beerName
                         anchors.verticalCenter: parent.verticalCenter
                         color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
                     }

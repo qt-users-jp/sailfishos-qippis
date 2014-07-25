@@ -39,6 +39,7 @@ Page {
                     font.pixelSize: Theme.fontSizeLarge
                     anchors.verticalCenter: parent.verticalCenter
                     color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    textFormat: Text.RichText
                     text: favorite.getName(favorite.getId(index))
                 }
             }

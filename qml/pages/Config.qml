@@ -41,9 +41,9 @@ Dialog {
             textFormat: Text.RichText
             wrapMode: Text.WordWrap
             text: "You must get an API Key to use BreweryDB&apos;s APIs.<br>" +
-                  "Please sign up at below URL if you do not have an account of BreweryDB.com" +
+                  "Please sign up at below URL if you do not have an account of BreweryDB.com<br>" +
                   "<br>" +
-                  "<a href=\"https://www.brewerydb.com/auth/signup\"> https://www.brewerydb.com/auth/signup </a><br>" +
+                  "https://www.brewerydb.com/auth/signup<br>" +
                   "<br>" +
                   "You can get an API Key with access limit (400times/day) free.<br>"
         }

@@ -53,6 +53,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/FrontPage.qml" line="66"/>
+        <source>Favorites Beers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/FrontPage.qml" line="83"/>
         <source>Search the Beer</source>
         <translation type="unfinished"></translation>
