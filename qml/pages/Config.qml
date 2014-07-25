@@ -4,6 +4,8 @@ import Sailfish.Silica 1.0
 Dialog {
     id: page
 
+    canAccept: false
+
     Storage {
         id: storage
         name: "SettingDB"
@@ -30,6 +32,7 @@ Dialog {
             placeholderText: "API Key"
             text: storage.get("api_key")
             clip: true
+            validator: RegExpValidator { regExp: /^[a-z0-9]{32}$/ }
         }
         Text {
             width: column.width
@@ -45,6 +48,17 @@ Dialog {
                   "You can get an API Key with access limit (400times/day) free.<br>"
         }
     }
+
+    states: [
+        State {
+            name: "InputVerifier"
+            when: keyStrings.text.length == 32
+            PropertyChanges {
+                target: page
+                canAccept: true
+            }
+        }
+    ]
 
     onDone: {
         if (result == DialogResult.Accepted) {

@@ -40,6 +40,12 @@ Page {
         name: "SettingDB"
     }
 
+    Timer {
+        running: page.status == PageStatus.Active && !storage.get("api_key")
+        interval: 100
+        onTriggered: pageStack.push(Qt.resolvedUrl("Config.qml"))
+    }
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -49,7 +55,7 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutQippis.qml"))
             }
             MenuItem {
-                text: qsTr("Settings")
+                text: qsTr("BreweryDB API Key")
                 onClicked: pageStack.push(Qt.resolvedUrl("Config.qml"))
             }
             MenuItem {
@@ -90,15 +96,11 @@ Page {
                 id: searchButton
                 x: page.width - ( searchButton.width + 20 )
                 text: "Search!"
-                onClicked: if (storage.get("api_key") === "") {
-                               pageStack.push(Qt.resolvedUrl("Config.qml"));
-                           } else {
-                               pageStack.push(Qt.resolvedUrl("SearchResults.qml"), {
-                                                  searchWords: searchWords.text.replace(/^\s+|\s+$/g, "").replace(/\s+/g, " AND "),
-                                                  pageNumber: 1,
-                                                  apiKey: storage.get("api_key")
-                                              })
-                           }
+                onClicked: pageStack.push(Qt.resolvedUrl("SearchResults.qml"), {
+                                              searchWords: searchWords.text.replace(/^\s+|\s+$/g, "").replace(/\s+/g, " AND "),
+                                              pageNumber: 1,
+                                              apiKey: storage.get("api_key")
+                                          })
             }
         }
     }

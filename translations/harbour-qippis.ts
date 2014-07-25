@@ -35,7 +35,7 @@
 <context>
     <name>Config</name>
     <message>
-        <location filename="../qml/pages/Config.qml" line="22"/>
+        <location filename="../qml/pages/Config.qml" line="24"/>
         <source>API Key Setting</source>
         <translation type="unfinished"></translation>
     </message>
@@ -43,17 +43,17 @@
 <context>
     <name>FrontPage</name>
     <message>
-        <location filename="../qml/pages/FrontPage.qml" line="52"/>
-        <source>Settings</source>
+        <location filename="../qml/pages/FrontPage.qml" line="58"/>
+        <source>BreweryDB API Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FrontPage.qml" line="56"/>
+        <location filename="../qml/pages/FrontPage.qml" line="62"/>
         <source>Twitter Account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FrontPage.qml" line="77"/>
+        <location filename="../qml/pages/FrontPage.qml" line="83"/>
         <source>Search the Beer</source>
         <translation type="unfinished"></translation>
     </message>
