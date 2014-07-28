@@ -123,80 +123,80 @@ Twitter4QML::Twitter4QML(QObject *parent)
     int major = 1;
     int minor = 1;
 
-    qmlRegisterUncreatableType<Twitter4QML>("Twitter4QML", major, minor, "Twitter4QML", "access twitter4qml directly.");
+    qmlRegisterUncreatableType<Twitter4QML>("harbour.qippis.Twitter4QML", major, minor, "Twitter4QML", "access twitter4qml directly.");
 
     // REST API v1.1 Resources
     // https://dev.twitter.com/docs/api/1.1
 
     // Timelines
-    qmlRegisterType<StatusesMentionsTimeline>("Twitter4QML", major, minor, "StatusesMentionsTimelineModel");
-    qmlRegisterType<StatusesUserTimeline>("Twitter4QML", major, minor, "StatusesUserTimelineModel");
-    qmlRegisterType<StatusesHomeTimeline>("Twitter4QML", major, minor, "StatusesHomeTimelineModel");
-    qmlRegisterType<StatusesRetweetsOfMe>("Twitter4QML", major, minor, "StatusesRetweetsOfMeModel");
+    qmlRegisterType<StatusesMentionsTimeline>("harbour.qippis.Twitter4QML", major, minor, "StatusesMentionsTimelineModel");
+    qmlRegisterType<StatusesUserTimeline>("harbour.qippis.Twitter4QML", major, minor, "StatusesUserTimelineModel");
+    qmlRegisterType<StatusesHomeTimeline>("harbour.qippis.Twitter4QML", major, minor, "StatusesHomeTimelineModel");
+    qmlRegisterType<StatusesRetweetsOfMe>("harbour.qippis.Twitter4QML", major, minor, "StatusesRetweetsOfMeModel");
 
     // Tweets
-    qmlRegisterType<StatusesRetweets>("Twitter4QML", major, minor, "StatusesRetweetsModel");
-    qmlRegisterType<Status>("Twitter4QML", major, minor, "Status");
+    qmlRegisterType<StatusesRetweets>("harbour.qippis.Twitter4QML", major, minor, "StatusesRetweetsModel");
+    qmlRegisterType<Status>("harbour.qippis.Twitter4QML", major, minor, "Status");
 
     // Search
-    qmlRegisterType<SearchTweets>("Twitter4QML", major, minor, "SearchTweetsModel");
+    qmlRegisterType<SearchTweets>("harbour.qippis.Twitter4QML", major, minor, "SearchTweetsModel");
 
     // Streaming
-    qmlRegisterType<UserStream>("Twitter4QML", major, minor, "UserStreamModel");
-    qmlRegisterType<StatusesFilter>("Twitter4QML", major, minor, "StatusesFilterModel");
+    qmlRegisterType<UserStream>("harbour.qippis.Twitter4QML", major, minor, "UserStreamModel");
+    qmlRegisterType<StatusesFilter>("harbour.qippis.Twitter4QML", major, minor, "StatusesFilterModel");
 
     // Direct Messages
-    qmlRegisterType<DirectMessages>("Twitter4QML", major, minor, "DirectMessagesModel");
-    qmlRegisterType<DirectMessagesSent>("Twitter4QML", major, minor, "DirectMessagesSentModel");
-    qmlRegisterType<DirectMessage>("Twitter4QML", major, minor, "DirectMessage");
+    qmlRegisterType<DirectMessages>("harbour.qippis.Twitter4QML", major, minor, "DirectMessagesModel");
+    qmlRegisterType<DirectMessagesSent>("harbour.qippis.Twitter4QML", major, minor, "DirectMessagesSentModel");
+    qmlRegisterType<DirectMessage>("harbour.qippis.Twitter4QML", major, minor, "DirectMessage");
 
     // Friends & Followers
-    qmlRegisterType<FriendshipsNoRetweetsIds>("Twitter4QML", major, minor, "FriendshipsNoRetweetsIdsModel");
-    qmlRegisterType<FriendsIds>("Twitter4QML", major, minor, "FriendsIdsModel");
-    qmlRegisterType<FollowersIds>("Twitter4QML", major, minor, "FollowersIdsModel");
-    qmlRegisterType<FriendshipsIncoming>("Twitter4QML", major, minor, "FriendshipsIncomingModel");
-    qmlRegisterType<FriendshipsOutgoing>("Twitter4QML", major, minor, "FriendshipsOutgoingModel");
-    qmlRegisterType<FriendshipsShow>("Twitter4QML", major, minor, "FriendshipsShow");
-    qmlRegisterType<FriendsList>("Twitter4QML", major, minor, "FriendsListModel");
-    qmlRegisterType<FollowersList>("Twitter4QML", major, minor, "FollowersListModel");
+    qmlRegisterType<FriendshipsNoRetweetsIds>("harbour.qippis.Twitter4QML", major, minor, "FriendshipsNoRetweetsIdsModel");
+    qmlRegisterType<FriendsIds>("harbour.qippis.Twitter4QML", major, minor, "FriendsIdsModel");
+    qmlRegisterType<FollowersIds>("harbour.qippis.Twitter4QML", major, minor, "FollowersIdsModel");
+    qmlRegisterType<FriendshipsIncoming>("harbour.qippis.Twitter4QML", major, minor, "FriendshipsIncomingModel");
+    qmlRegisterType<FriendshipsOutgoing>("harbour.qippis.Twitter4QML", major, minor, "FriendshipsOutgoingModel");
+    qmlRegisterType<FriendshipsShow>("harbour.qippis.Twitter4QML", major, minor, "FriendshipsShow");
+    qmlRegisterType<FriendsList>("harbour.qippis.Twitter4QML", major, minor, "FriendsListModel");
+    qmlRegisterType<FollowersList>("harbour.qippis.Twitter4QML", major, minor, "FollowersListModel");
 
 
 
-    qmlRegisterType<UsersLookup>("Twitter4QML", major, minor, "UsersLookupModel");
-    qmlRegisterType<User>("Twitter4QML", major, minor, "User");
-    qmlRegisterType<UsersSuggestions>("Twitter4QML", major, minor, "UsersSuggestionsModel");
-    qmlRegisterType<UsersSuggestionsSlug>("Twitter4QML", major, minor, "UsersSuggestionsSlugModel");
-    qmlRegisterType<UsersSearch>("Twitter4QML", major, minor, "UsersSearchModel");
+    qmlRegisterType<UsersLookup>("harbour.qippis.Twitter4QML", major, minor, "UsersLookupModel");
+    qmlRegisterType<User>("harbour.qippis.Twitter4QML", major, minor, "User");
+    qmlRegisterType<UsersSuggestions>("harbour.qippis.Twitter4QML", major, minor, "UsersSuggestionsModel");
+    qmlRegisterType<UsersSuggestionsSlug>("harbour.qippis.Twitter4QML", major, minor, "UsersSuggestionsSlugModel");
+    qmlRegisterType<UsersSearch>("harbour.qippis.Twitter4QML", major, minor, "UsersSearchModel");
 
-    qmlRegisterType<FavoritesList>("Twitter4QML", major, minor, "FavoritesListModel");
+    qmlRegisterType<FavoritesList>("harbour.qippis.Twitter4QML", major, minor, "FavoritesListModel");
 
-    qmlRegisterType<ListsList>("Twitter4QML", major, minor, "ListsListModel");
-    qmlRegisterType<ListsSubscriptions>("Twitter4QML", major, minor, "ListsSubscriptionsModel");
-    qmlRegisterType<ListsMemberships>("Twitter4QML", major, minor, "ListsMembershipsModel");
-    qmlRegisterType<ListsStatuses>("Twitter4QML", major, minor, "ListStatusesModel");
-    qmlRegisterType<ListsMembers>("Twitter4QML", major, minor, "ListMembersModel");
-    qmlRegisterType<List>("Twitter4QML", major, minor, "List");
+    qmlRegisterType<ListsList>("harbour.qippis.Twitter4QML", major, minor, "ListsListModel");
+    qmlRegisterType<ListsSubscriptions>("harbour.qippis.Twitter4QML", major, minor, "ListsSubscriptionsModel");
+    qmlRegisterType<ListsMemberships>("harbour.qippis.Twitter4QML", major, minor, "ListsMembershipsModel");
+    qmlRegisterType<ListsStatuses>("harbour.qippis.Twitter4QML", major, minor, "ListStatusesModel");
+    qmlRegisterType<ListsMembers>("harbour.qippis.Twitter4QML", major, minor, "ListMembersModel");
+    qmlRegisterType<List>("harbour.qippis.Twitter4QML", major, minor, "List");
 
-    qmlRegisterType<AccountVerifyCredentials>("Twitter4QML", major, minor, "AccountVerifyCredentials");
-    qmlRegisterType<AccountUpdateProfile>("Twitter4QML", major, minor, "AccountUpdateProfile");
-    qmlRegisterType<AccountSettings>("Twitter4QML", major, minor, "AccountSettings");
-    qmlRegisterType<ApplicationRateLimitStatus>("Twitter4QML", major, minor, "ApplicationRateLimitStatus");
+    qmlRegisterType<AccountVerifyCredentials>("harbour.qippis.Twitter4QML", major, minor, "AccountVerifyCredentials");
+    qmlRegisterType<AccountUpdateProfile>("harbour.qippis.Twitter4QML", major, minor, "AccountUpdateProfile");
+    qmlRegisterType<AccountSettings>("harbour.qippis.Twitter4QML", major, minor, "AccountSettings");
+    qmlRegisterType<ApplicationRateLimitStatus>("harbour.qippis.Twitter4QML", major, minor, "ApplicationRateLimitStatus");
 
-    qmlRegisterType<SavedSearchesList>("Twitter4QML", major, minor, "SavedSearchesModel");
+    qmlRegisterType<SavedSearchesList>("harbour.qippis.Twitter4QML", major, minor, "SavedSearchesModel");
 
-    qmlRegisterType<GeoSearch>("Twitter4QML", major, minor, "GeoSearchModel");
-    qmlRegisterType<GeoReverseGeocode>("Twitter4QML", major, minor, "GeoReverseGeocodeModel");
+    qmlRegisterType<GeoSearch>("harbour.qippis.Twitter4QML", major, minor, "GeoSearchModel");
+    qmlRegisterType<GeoReverseGeocode>("harbour.qippis.Twitter4QML", major, minor, "GeoReverseGeocodeModel");
 
-    qmlRegisterType<TrendsPlace>("Twitter4QML", major, minor, "TrendsPlaceModel");
-    qmlRegisterType<TrendsAvailable>("Twitter4QML", major, minor, "TrendsAvailableModel");
+    qmlRegisterType<TrendsPlace>("harbour.qippis.Twitter4QML", major, minor, "TrendsPlaceModel");
+    qmlRegisterType<TrendsAvailable>("harbour.qippis.Twitter4QML", major, minor, "TrendsAvailableModel");
 
-    qmlRegisterType<OAuth>("Twitter4QML", major, minor, "OAuth");
+    qmlRegisterType<OAuth>("harbour.qippis.Twitter4QML", major, minor, "OAuth");
 
-    qmlRegisterType<HelpConfiguration>("Twitter4QML", major, minor, "HelpConfiguration");
-    qmlRegisterType<HelpLanguages>("Twitter4QML", major, minor, "HelpLanguagesModel");
+    qmlRegisterType<HelpConfiguration>("harbour.qippis.Twitter4QML", major, minor, "HelpConfiguration");
+    qmlRegisterType<HelpLanguages>("harbour.qippis.Twitter4QML", major, minor, "HelpLanguagesModel");
 
-    qmlRegisterType<HelpPrivacy>("Twitter4QML", major, minor, "HelpPrivacy");
-    qmlRegisterType<HelpTos>("Twitter4QML", major, minor, "HelpTos");
+    qmlRegisterType<HelpPrivacy>("harbour.qippis.Twitter4QML", major, minor, "HelpPrivacy");
+    qmlRegisterType<HelpTos>("harbour.qippis.Twitter4QML", major, minor, "HelpTos");
 
 }
 

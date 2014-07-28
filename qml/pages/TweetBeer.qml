@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import Twitter4QML 1.1
+import harbour.qippis.Twitter4QML 1.1
 
 Dialog {
     id: tweet
