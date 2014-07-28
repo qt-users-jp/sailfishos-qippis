@@ -66,17 +66,17 @@
 <context>
     <name>SearchResults</name>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="137"/>
+        <location filename="../qml/pages/SearchResults.qml" line="142"/>
         <source>Previous Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="153"/>
+        <location filename="../qml/pages/SearchResults.qml" line="158"/>
         <source>Next Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="177"/>
+        <location filename="../qml/pages/SearchResults.qml" line="137"/>
         <source>Page: %1/%2</source>
         <translation type="unfinished"></translation>
     </message>

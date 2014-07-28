@@ -129,8 +129,13 @@ Page {
 
     Component.onCompleted: search();
 
-    SilicaFlickable {
+    SilicaListView {
+        id: listView
+        model: listModel
         anchors.fill: parent
+        header: PageHeader {
+            title: qsTr("Page: %1/%2").arg(currentPage).arg(numberOfPages)
+        }
 
         PullDownMenu {
             MenuItem {
@@ -169,54 +174,46 @@ Page {
             text: errorMessage
         }
 
-        SilicaListView {
-            id: listView
-            model: listModel
-            anchors.fill: parent
-            header: PageHeader {
-                title: qsTr("Page: %1/%2").arg(currentPage).arg(numberOfPages)
-            }
-            delegate: BackgroundItem {
-                id: delegate
+        delegate: BackgroundItem {
+            id: delegate
 
-                Row {
-                    x: Theme.paddingLarge
-                    spacing: Theme.paddingLarge
-                    Image {
-                        id: iconImage
-                        width: 64
-                        height: 64
-                        anchors.verticalCenter: parent.verticalCenter
-                        source: beerIcon ? beerIcon : "../images/noImage.jpg"
-                        BusyIndicator {
-                            anchors.centerIn: parent
-                            running: iconImage.status == Image.Loading
-                        }
-                    }
-                    Text {
-                        font.pixelSize: Theme.fontSizeLarge
-                        textFormat: Text.RichText
-                        text: beerName
-                        anchors.verticalCenter: parent.verticalCenter
-                        color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+            Row {
+                x: Theme.paddingLarge
+                spacing: Theme.paddingLarge
+                Image {
+                    id: iconImage
+                    width: 64
+                    height: 64
+                    anchors.verticalCenter: parent.verticalCenter
+                    source: beerIcon ? beerIcon : "../images/noImage.jpg"
+                    BusyIndicator {
+                        anchors.centerIn: parent
+                        running: iconImage.status == Image.Loading
                     }
                 }
-                onClicked: pageStack.push(Qt.resolvedUrl("BeerDescription.qml"), {
-                                              beerId: beerId,
-                                              beerName: beerName,
-                                              beerIcon: beerIcon,
-                                              beerLabel: beerLabel,
-                                              beerDescription: beerDescription,
-                                              beerAbv: beerAbv,
-                                              beerIbu: beerIbu,
-                                              beerSrm: beerSrm,
-                                              beerOg: beerOg,
-                                              categoryName: categoryName,
-                                              styleName: styleName,
-                                              apiKey: apiKey
-                                          })
+                Text {
+                    font.pixelSize: Theme.fontSizeLarge
+                    textFormat: Text.RichText
+                    text: beerName
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                }
             }
-            VerticalScrollDecorator {}
+            onClicked: pageStack.push(Qt.resolvedUrl("BeerDescription.qml"), {
+                                          beerId: beerId,
+                                          beerName: beerName,
+                                          beerIcon: beerIcon,
+                                          beerLabel: beerLabel,
+                                          beerDescription: beerDescription,
+                                          beerAbv: beerAbv,
+                                          beerIbu: beerIbu,
+                                          beerSrm: beerSrm,
+                                          beerOg: beerOg,
+                                          categoryName: categoryName,
+                                          styleName: styleName,
+                                          apiKey: apiKey
+                                      })
         }
+        VerticalScrollDecorator {}
     }
 }
