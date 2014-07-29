@@ -8,5 +8,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Sun Apr 13 2014 helicalgear <helicalgear@gmail.com> 0.0.1-1
+* Mon July 28 2014 helicalgear <helicalgear@gmail.com> 0.0.1-2
+- Fix the bug that somtime pull-down/push-up menu lost
+  the response in SearchResult.qml
+- Change the name of module "Twitter4QML" -> "harbour.qippis.Twitter4QML"
+  according to Sailfish FAQ ( https://harbour.jolla.com/faq#1.5.0 )
+
+* Sun July 27 2014 helicalgear <helicalgear@gmail.com> 0.0.1-1
 - First release

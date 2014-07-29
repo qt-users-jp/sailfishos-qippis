@@ -14,7 +14,7 @@ Name:       harbour-qippis
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    App to access the BreweryDB.com
 Version:    0.0.1
-Release:    1
+Release:    2
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/
