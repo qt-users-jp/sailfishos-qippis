@@ -1,3 +1,3 @@
 [submodule "twitter4qml"]
 	path = twitter4qml
-	url = ssh://cr.qtquick.me/twitter4qml.git
+	url = git://git.qtquick.me/twitter4qml.git
