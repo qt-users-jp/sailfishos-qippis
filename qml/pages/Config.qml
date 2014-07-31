@@ -43,9 +43,10 @@ Dialog {
             text: "You must get an API Key to use BreweryDB&apos;s APIs.<br>" +
                   "Please sign up at below URL if you do not have an account of BreweryDB.com<br>" +
                   "<br>" +
-                  "https://www.brewerydb.com/auth/signup<br>" +
+                  "<a href=\"https://www.brewerydb.com/auth/signup\">https://www.brewerydb.com/auth/signup</a><br>" +
                   "<br>" +
                   "You can get an API Key with access limit (400times/day) free.<br>"
+            onLinkActivated: Qt.openUrlExternally(link)
         }
     }
 
