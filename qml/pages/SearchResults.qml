@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-
+import QtQuick.XmlListModel 2.0
 
 Page {
     id: page
@@ -14,8 +14,45 @@ Page {
     property bool statusOfDb: true
     property string errorMessage: ""
 
-    ListModel {
+    XmlListModel {
+        id: dbStatus
+
+        query: "/root"
+        XmlRole { name: "currentPage"; query: "currentPage/number()" }
+        XmlRole { name: "numberOfPages"; query: "numberOfPages/number()" }
+        XmlRole { name: "totalResults"; query: "totalResults/number()" }
+        XmlRole { name: "dbStat"; query: "status/string()" }
+        XmlRole { name: "errMsg"; query: "errorMessage/string()" }
+
+        onStatusChanged: {
+            if ( dbStatus.status === XmlListModel.Ready ) {
+                currentPage = dbStatus.get(0).currentPage;
+                numberOfPages = dbStatus.get(0).numberOfPages;
+                totalResults = dbStatus.get(0).totalResults;
+                statusOfDb = (dbStatus.get(0).dbStat === "success");
+                errorMessage = dbStatus.get(0).errMsg ? dbStatus.get(0).errMsg:"";
+            }
+        }
+    }
+
+    XmlListModel {
         id: listModel
+
+        xml: dbStatus.xml
+        query: "/root/data/item"
+        XmlRole { name: "beerId"; query: "id/string()" }
+        XmlRole { name: "beerName"; query: "name/string()" }
+        XmlRole { name: "beerDescription"; query: "description/string()" }
+        XmlRole { name: "beerAbv"; query: "abv/string()" }
+        XmlRole { name: "beerIbu"; query: "ibu/string()" }
+        XmlRole { name: "beerSrm"; query: "srm/name/string()" }
+        XmlRole { name: "beerOg"; query: "og/string()" }
+        XmlRole { name: "beerIcon"; query: "labels/icon/string()" }
+        XmlRole { name: "beerLabel"; query: "labels/medium/string()" }
+        XmlRole { name: "styleId"; query: "style/id/string()" }
+        XmlRole { name: "styleName"; query: "style/name/string()" }
+        XmlRole { name: "categoryId"; query: "style/category/id/string()" }
+        XmlRole { name: "categoryName"; query: "style/category/string()" }
     }
 
     property bool loadingStatus: true
@@ -27,104 +64,26 @@ Page {
 
     function search() {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://api.brewerydb.com/v2/search?q="+ searchWords + "&p=" + pageNumber + "&type=beer&key=" + apiKey + "&format=xml", true);
+        xhr.open("GET", "https://api.brewerydb.com/v2/search?q=%1&p=%2&type=beer&withBrewery=Y&key=%3&format=xml".arg(searchWords).arg(pageNumber).arg(apiKey), true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    var results = xhr.responseXML.documentElement.childNodes;
-                    for (var i=0; i<results.length; i++) {
-                        switch (results[i].nodeName) {
-                        case "currentPage": currentPage = results[i].firstChild.nodeValue; break;
-                        case "numberOfPages": numberOfPages = results[i].firstChild.nodeValue; break;
-                        case "totalResults": totalResults = results[i].firstChild.nodeValue; break;
-                        case "data": makeList(results[i].childNodes); break;
-                        case "status": statusOfDb = (results[i].firstChild.nodeValue === "success"); break;
-                        case "errorMesage": errorMessage = results[i].firstChild.nodeValue; break;
-                        default:
-                        }
-                    }
-                } else if (xhr.status === 401) {
+                switch (xhr.status) {
+                case 200:
+                    dbStatus.xml = xhr.responseText;
+                    break;
+                case 401:
                     statusOfDb = false;
-                    errorMessage = "Please check API_Key";
-                } else {
+                    errorMessage = qsTr("Please check API_Key");
+                    break;
+                default:
                     statusOfDb = false;
-                    errorMessage = "Something wrong to get the XML data.";
+                    errorMessage = qsTr("Something wrong to get the XML data.");
+                    break;
                 }
                 loadingStatus = false;
             }
         }
         xhr.send();
-    }
-
-    function makeList(xmldata) {
-        for (var i=0; i<xmldata.length; i++) {
-            if (xmldata[i].nodeName === "item") {
-                var _beerId = ""; var _beerName = ""; var _beerDescription = "";
-                var _beerAbv = ""; var _beerIbu = ""; var _beerSrm = ""; var _beerOg = "";
-                var _beerIcon = ""; var _beerLabel = "";
-                var _styleId = ""; var _styleName = "";
-                var _categoryId = ""; var _categoryName = "";
-                var beerItem = xmldata[i].childNodes;
-                for (var j=0; j<beerItem.length; j++) {
-                    switch (beerItem[j].nodeName) {
-                    case "id": _beerId = beerItem[j].firstChild.nodeValue; break;
-                    case "name": _beerName = beerItem[j].firstChild.nodeValue; break;
-                    case "description": _beerDescription = beerItem[j].firstChild.nodeValue; break;
-                    case "abv": _beerAbv = beerItem[j].firstChild.nodeValue; break;
-                    case "ibu": _beerIbu = beerItem[j].firstChild.nodeValue; break;
-                    case "srm": var srmValue = beerItem[j].childNodes;
-                        for (var k=0; k<srmValue.length; k++) {
-                            if (srmValue[k].nodeName === "name") _beerSrm = srmValue[k].firstChild.nodeValue;
-                        }
-                        break;
-                    case "og": _beerOg = beerItem[j].firstChild.nodeValue; break;
-                    case "labels": var labels = beerItem[j].childNodes;
-                        for (var l=0; l<labels.length; l++) {
-                            switch (labels[l].nodeName) {
-                            case "icon": _beerIcon = labels[l].firstChild.nodeValue; break;
-                            case "medium": _beerLabel = labels[l].firstChild.nodeValue; break;
-                            default:
-                            }
-                        }
-                        break;
-                    case "style": var beerStyle =beerItem[j].childNodes;
-                        for (var m=0; m<beerStyle.length; m++) {
-                            switch (beerStyle[m].nodeName) {
-                            case "id": _styleId = beerStyle[m].firstChild.nodeValue; break;
-                            case "name": _styleName = beerStyle[m].firstChild.nodeValue; break;
-                            case "category": var beerCategory = beerStyle[m].childNodes;
-                                for (var n=0; n<beerCategory.length; n++) {
-                                    switch (beerCategory[n].nodeName) {
-                                    case "id": _categoryId = beerCategory[n].firstChild.nodeValue; break;
-                                    case "name": _categoryName = beerCategory[n].firstChild.nodeValue; break;
-                                    default:
-                                    }
-                                }
-                                break;
-                            default:
-                            }
-                        }
-                        break;
-                    default:
-                    }
-                }
-                listModel.append({
-                                     "beerId": _beerId,
-                                     "beerName": _beerName,
-                                     "beerDescription": _beerDescription,
-                                     "beerAbv": _beerAbv,
-                                     "beerIbu": _beerIbu,
-                                     "beerSrm": _beerSrm,
-                                     "beerOg": _beerOg,
-                                     "beerIcon": _beerIcon,
-                                     "beerLabel": _beerLabel,
-                                     "styleId": _styleId,
-                                     "styleName": _styleName,
-                                     "categoryId": _categoryId,
-                                     "categoryName": _categoryName
-                                 });
-            }
-        }
     }
 
     Component.onCompleted: search();

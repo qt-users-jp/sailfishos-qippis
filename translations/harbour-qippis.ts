@@ -66,18 +66,28 @@
 <context>
     <name>SearchResults</name>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="142"/>
+        <location filename="../qml/pages/SearchResults.qml" line="76"/>
+        <source>Please check API_Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchResults.qml" line="80"/>
+        <source>Something wrong to get the XML data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchResults.qml" line="96"/>
+        <source>Page: %1/%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchResults.qml" line="101"/>
         <source>Previous Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="158"/>
+        <location filename="../qml/pages/SearchResults.qml" line="117"/>
         <source>Next Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SearchResults.qml" line="137"/>
-        <source>Page: %1/%2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
