@@ -27,7 +27,7 @@
 <context>
     <name>BeerDescription</name>
     <message>
-        <location filename="../qml/pages/BeerDescription.qml" line="46"/>
+        <location filename="../qml/pages/BeerDescription.qml" line="59"/>
         <source>Beer&apos;s Information</source>
         <translation type="unfinished"></translation>
     </message>
