@@ -62,6 +62,16 @@
         <source>Search the Beer</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/pages/FrontPage.qml" line="101"/>
+        <source>clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FrontPage.qml" line="108"/>
+        <source>Search!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchResults</name>

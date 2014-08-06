@@ -92,15 +92,26 @@ Page {
                 font.pixelSize: Theme.fontSizeLarge
                 clip: true
             }
-            Button {
-                id: searchButton
-                x: page.width - ( searchButton.width + 20 )
-                text: "Search!"
-                onClicked: pageStack.push(Qt.resolvedUrl("SearchResults.qml"), {
-                                              searchWords: searchWords.text.replace(/^\s+|\s+$/g, "").replace(/\s+/g, " AND "),
-                                              pageNumber: 1,
-                                              apiKey: storage.get("api_key")
-                                          })
+            Row {
+                id: buttons
+                x: (page.width / 2) - (buttons.width / 2)
+                spacing: Theme.paddingLarge * 2
+                Button {
+                    width: page.width / 3
+                    text: qsTr("clear")
+                    onClicked: searchWords.text=""
+                }
+                Button {
+                    id: searchButton
+                    x: page.width
+                    width: page.width / 3
+                    text: qsTr("Search!")
+                    onClicked: pageStack.push(Qt.resolvedUrl("SearchResults.qml"), {
+                                                  searchWords: searchWords.text.replace(/^\s+|\s+$/g, "").replace(/\s+/g, " AND "),
+                                                  pageNumber: 1,
+                                                  apiKey: storage.get("api_key")
+                                              })
+                }
             }
         }
     }
