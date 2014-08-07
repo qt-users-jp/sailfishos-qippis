@@ -8,6 +8,9 @@ Dialog {
     property string beerId
     property string beerName
 
+    property string _image: ""
+    property var media: new Array
+
     Timer {
         running: tweet.status == PageStatus.Active && oauth.state !== OAuth.Authorized
         interval: 100
@@ -18,40 +21,74 @@ Dialog {
         id: beerStatus
     }
 
-    Column {
-        id: column
+    SilicaFlickable {
+        anchors.fill: parent
 
-        width: tweet.width
-        spacing: Theme.paddingLarge
-        DialogHeader {
-            title: "Tweet"
-        }
-        Row {
-            x: Theme.paddingLarge
-            spacing: Theme.paddingLarge
-            width: column.width
-            Image {
-                id: icon
-                source: verifyCredentials.profile_image_url.replace('_normal', '_bigger')
+        PullDownMenu {
+            MenuItem {
+                visible: tweet._image === ""
+                text: "Add Image"
+                onClicked: {
+                    var imagePicker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
+                    imagePicker.selectedContentChanged.connect(function() {
+                        tweet._image = imagePicker.selectedContent;
+                        tweet.media.push(_image.replace("file://",""));
+                    });
+                }
             }
-            Label {
-                id: screenName
-                text: storage.get("screenName")
-                color: Theme.primaryColor
-                font.pixelSize: Theme.fontSizeExtraLarge
+            MenuItem {
+                visible: tweet._image !== ""
+                text: "Remove Image"
+                onClicked: {
+                    tweet._image = "";
+                    tweet.media = [];
+                }
             }
         }
-        TextArea {
-            id: tweetText
+
+        Column {
+            id: column
+
             width: tweet.width
-            height: 300
-            text: "I like %1!! http://www.brewerydb.com/beer/%2 #qippis".arg(beerName).arg(beerId)
+            spacing: Theme.paddingLarge
+            DialogHeader {
+                title: "Tweet"
+            }
+            Row {
+                x: Theme.paddingLarge
+                spacing: Theme.paddingLarge
+                width: column.width
+                Image {
+                    id: icon
+                    source: verifyCredentials.profile_image_url.replace('_normal', '_bigger')
+                }
+                Label {
+                    id: screenName
+                    text: storage.get("screenName")
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeExtraLarge
+                }
+            }
+            TextArea {
+                id: tweetText
+                width: tweet.width
+                height: 300
+                text: "I like %1!! http://www.brewerydb.com/beer/%2 #qippis".arg(beerName).arg(beerId)
+            }
+            Image {
+                visible: tweet._image !== ""
+                x: Theme.paddingLarge
+                width: 160
+                height: 160
+                fillMode: Image.PreserveAspectCrop
+                source: tweet._image
+            }
         }
     }
 
     onDone: {
         if (result == DialogResult.Accepted) {
-            var parameter = {'status': tweetText.text, 'media': ""};
+            var parameter = {'status': tweetText.text, 'media': tweet.media};
             beerStatus.statusesUpdate(parameter);
         }
     }
