@@ -84,27 +84,25 @@ Page {
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
+            Row {
             TextField {
                 x: Theme.paddingLarge
-                width: column.width - ( Theme.paddingLarge * 2)
+                width: column.width - clearButton.width
                 id: searchWords
                 placeholderText: "Name of Beer"
                 font.pixelSize: Theme.fontSizeLarge
                 clip: true
             }
-            Row {
-                id: buttons
-                x: (page.width / 2) - (buttons.width / 2)
-                spacing: Theme.paddingLarge * 2
-                Button {
-                    width: page.width / 3
-                    text: qsTr("clear")
-                    onClicked: searchWords.text=""
+                IconButton {
+                    id: clearButton
+                    icon.source: "image://theme/icon-m-clear"
+                    onClicked: searchWords.text = ""
                 }
+            }
                 Button {
                     id: searchButton
-                    x: page.width
-                    width: page.width / 3
+                    x: page.width * 6 / 10
+                    width: page.width * 3 / 10
                     text: qsTr("Search!")
                     onClicked: pageStack.push(Qt.resolvedUrl("SearchResults.qml"), {
                                                   searchWords: searchWords.text.replace(/^\s+|\s+$/g, "").replace(/\s+/g, " AND "),
@@ -112,7 +110,6 @@ Page {
                                                   apiKey: storage.get("api_key")
                                               })
                 }
-            }
         }
     }
 }
