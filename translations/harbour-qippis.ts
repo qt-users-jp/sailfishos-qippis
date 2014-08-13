@@ -76,27 +76,27 @@
 <context>
     <name>SearchResults</name>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="76"/>
+        <location filename="../qml/pages/SearchResults.qml" line="77"/>
         <source>Please check API_Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="80"/>
+        <location filename="../qml/pages/SearchResults.qml" line="81"/>
         <source>Something wrong to get the XML data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="96"/>
+        <location filename="../qml/pages/SearchResults.qml" line="97"/>
         <source>Page: %1/%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="101"/>
+        <location filename="../qml/pages/SearchResults.qml" line="102"/>
         <source>Previous Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="117"/>
+        <location filename="../qml/pages/SearchResults.qml" line="118"/>
         <source>Next Page</source>
         <translation type="unfinished"></translation>
     </message>

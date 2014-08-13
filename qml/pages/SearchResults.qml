@@ -53,6 +53,7 @@ Page {
         XmlRole { name: "styleName"; query: "style/name/string()" }
         XmlRole { name: "categoryId"; query: "style/category/id/string()" }
         XmlRole { name: "categoryName"; query: "style/category/string()" }
+        XmlRole { name: "breweryName"; query: "breweries/item/name/string()" }
     }
 
     property bool loadingStatus: true
@@ -64,7 +65,7 @@ Page {
 
     function search() {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://api.brewerydb.com/v2/search?q=%1&p=%2&type=beer&withBrewery=Y&key=%3&format=xml".arg(searchWords).arg(pageNumber).arg(apiKey), true);
+        xhr.open("GET", "https://api.brewerydb.com/v2/search?q=%1&p=%2&type=beer&withBreweries=Y&key=%3&format=xml".arg(searchWords).arg(pageNumber).arg(apiKey), true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 switch (xhr.status) {
@@ -137,12 +138,13 @@ Page {
             id: delegate
 
             Row {
+                width: page.width
                 x: Theme.paddingLarge
                 spacing: Theme.paddingLarge
                 Image {
                     id: iconImage
-                    width: 64
-                    height: 64
+                    width: 72
+                    height: 72
                     anchors.verticalCenter: parent.verticalCenter
                     source: beerIcon ? beerIcon : "../images/noImage.jpg"
                     BusyIndicator {
@@ -150,12 +152,25 @@ Page {
                         running: iconImage.status == Image.Loading
                     }
                 }
-                Text {
-                    font.pixelSize: Theme.fontSizeLarge
-                    textFormat: Text.RichText
-                    text: beerName
-                    anchors.verticalCenter: parent.verticalCenter
-                    color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                Column {
+                    id: names
+                    width: page.width - iconImage.width
+                    height: iconImage.height
+                    Text {
+                        id: beer
+                        height: names.height - brewery.height
+                        font.pixelSize: Theme.fontSizeLarge
+                        textFormat: Text.RichText
+                        text: beerName
+                        color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    }
+                    Text {
+                        id: brewery
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        textFormat: Text.RichText
+                        text: breweryName
+                        color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    }
                 }
             }
             onClicked: pageStack.push(Qt.resolvedUrl("BeerDescription.qml"), {
@@ -170,6 +185,7 @@ Page {
                                           beerOg: beerOg,
                                           categoryName: categoryName,
                                           styleName: styleName,
+                                          breweryName: breweryName,
                                           apiKey: apiKey
                                       })
         }
