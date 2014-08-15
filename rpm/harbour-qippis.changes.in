@@ -8,6 +8,15 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Fri Aug 15 2014 helicalgear <helicalgear@gmail.com> 0.0.2-1
+- Change repo url of twitter4qml from cr to git
+- make breweryDB url be opened by the default browser with tapping text
+- Change the XML parse routine from makeList() to XmlListModel
+- Change the method to toggle the pull-down menu (favorite/unfavorite)
+- Add "Clear" Button to reset the search words.
+- Make it to be able to attach the image on tweet.
+- Add brewery info on search results.
+
 * Mon July 28 2014 helicalgear <helicalgear@gmail.com> 0.0.1-2
 - Fix the bug that somtime pull-down/push-up menu lost
   the response in SearchResult.qml

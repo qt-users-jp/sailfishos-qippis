@@ -63,12 +63,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FrontPage.qml" line="101"/>
-        <source>clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FrontPage.qml" line="108"/>
+        <location filename="../qml/pages/FrontPage.qml" line="106"/>
         <source>Search!</source>
         <translation type="unfinished"></translation>
     </message>

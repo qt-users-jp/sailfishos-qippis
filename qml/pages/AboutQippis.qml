@@ -13,17 +13,23 @@ Page {
         anchors.centerIn: parent
         width: parent.width
         height: about.contentHeight
-        text: "Client of BrewerDB.com for SailfishOS\n" +
-              "Version: 0.0.1 (very Alpha)\n" +
-              "\n" +
-              "Author:\n" +
-              "@helicalgear\n" +
-              "\n" +
-              "Special Thanks:\n" +
-              "@kenya888\n" +
-              "@task_jp\n"
+        text: "Client of BrewerDB.com for SailfishOS<br>" +
+              "Version: 0.0.2 (very Alpha)<br>" +
+              "<br>" +
+              "Please visit <a href=\"http://helicalgear.blogspot.jp/p/qippis.html\">Qippis Info</a> if you need more information about this app.<br>" +
+              "<br>" +
+              "<br>" +
+              "Author:<br>" +
+              "@helicalgear<br>" +
+              "<br>" +
+              "Special Thanks:<br>" +
+              "@kenya888<br>" +
+              "@task_jp<br>"
         horizontalAlignment: Text.AlignHCenter
         color: Theme.primaryColor
+        textFormat: Text.RichText
+        wrapMode: Text.WordWrap
+        onLinkActivated: Qt.openUrlExternally(link)
     }
 
 }
