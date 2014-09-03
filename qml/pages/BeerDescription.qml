@@ -63,7 +63,7 @@ Page {
                     id: labelImage
                     width: column.width / 2
                     height: column.width / 2
-                    source: beerLabel ? beerLabel : "../images/noImage.jpg"
+                    source: beerLabel ? beerLabel : "../images/noImage.png"
                     BusyIndicator {
                         anchors.centerIn: parent
                         running: labelImage.status == Image.Loading

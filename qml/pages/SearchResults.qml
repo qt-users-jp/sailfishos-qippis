@@ -146,7 +146,7 @@ Page {
                     width: 72
                     height: 72
                     anchors.verticalCenter: parent.verticalCenter
-                    source: beerIcon ? beerIcon : "../images/noImage.jpg"
+                    source: beerIcon ? beerIcon : "../images/noImage.png"
                     BusyIndicator {
                         anchors.centerIn: parent
                         running: iconImage.status == Image.Loading
