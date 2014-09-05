@@ -10,15 +10,17 @@ QtObject {
         var db = getDB();
         db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS favorites(beerId TEXT UNIQUE, beerName TEXT, beerIcon TEXT, beerLabel TEXT, beerDescription TEXT, beerAbv TEXT, beerIbu TEXT, beerSrm TEXT, beerOg TEXT, categoryName TEXT, styleName TEXT)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS favorites2(beerId TEXT UNIQUE, breweryName TEXT, breweryId TEXT, categoryId TEXT, styleId TEXT)');
         });
     }
 
-    function set(beerId, beerName, beerIcon, beerLabel, beerDescription, beerAbv, beerIbu, beerSrm, beerOg, categoryName, styleName) {
+    function set(beerId, beerName, beerIcon, beerLabel, beerDescription, beerAbv, beerIbu, beerSrm, beerOg, categoryName, styleName, breweryName, breweryId, categoryId, styleId) {
         var db = getDB();
         var success = false;
         db.transaction(function(tx) {
             var rs = tx.executeSql('INSERT OR REPLACE INTO favorites VALUES (?,?,?,?,?,?,?,?,?,?,?);', [beerId, beerName, beerIcon, beerLabel, beerDescription, beerAbv, beerIbu, beerSrm, beerOg, categoryName, styleName]);
-            success = (rs.rowsAffected > 0);
+            var rs2 = tx.executeSql('INSERT OR REPLACE INTO favorites2 VALUES (?,?,?,?,?);', [beerId, breweryName, breweryId, categoryId, styleId]);
+            success = (rs.rowsAffected > 0) && (rs2.rowsAffected > 0);
         });
         return success;
     }
@@ -28,7 +30,8 @@ QtObject {
         var success = false;
         db.transaction(function(tx) {
             var rs = tx.executeSql('DELETE FROM favorites WHERE beerId=?;', [beerId]);
-            success = (rs.rowsAffected > 0);
+            var rs2 = tx.executeSql('DELETE FROM favorites2 WHERE beerId=?;', [beerId]);
+            success = (rs.rowsAffected > 0) && (rs2.rowsAffected);
         });
         return success;
     }
@@ -170,6 +173,54 @@ QtObject {
             var rs = tx.executeSql('SELECT styleName FROM favorites WHERE beerId=?;', [beerId]);
             if (rs.rows.length > 0) {
                 value = rs.rows.item(0).styleName;
+            }
+        });
+        return value;
+    }
+
+    function getBrewery(beerId) {
+        var db = getDB();
+        var value = null;
+        db.readTransaction(function(tx) {
+            var rs = tx.executeSql('SELECT breweryName FROM favorites2 WHERE beerId=?;', [beerId]);
+            if (rs.rows.length > 0) {
+                value = rs.rows.item(0).breweryName;
+            }
+        });
+        return value;
+    }
+
+    function getCatId(beerId) {
+        var db = getDB();
+        var value = null;
+        db.readTransaction(function(tx) {
+            var rs = tx.executeSql('SELECT categoryId FROM favorites2 WHERE beerId=?;', [beerId]);
+            if (rs.rows.length > 0) {
+                value = rs.rows.item(0).categoryId;
+            }
+        });
+        return value;
+    }
+
+    function getStyId(beerId) {
+        var db = getDB();
+        var value = null;
+        db.readTransaction(function(tx) {
+            var rs = tx.executeSql('SELECT styleId FROM favorites2 WHERE beerId=?;', [beerId]);
+            if (rs.rows.length > 0) {
+                value = rs.rows.item(0).styleId;
+            }
+        });
+        return value;
+    }
+
+    function getBrewId(beerId) {
+        var db = getDB();
+        var value = null;
+        db.readTransaction(function(tx) {
+            var rs = tx.executeSql('SELECT breweryId FROM favorites2 WHERE beerId=?;', [beerId]);
+            if (rs.rows.length > 0) {
+                value = rs.rows.item(0).breweryId;
             }
         });
         return value;

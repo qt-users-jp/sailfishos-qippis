@@ -27,7 +27,17 @@
 <context>
     <name>BeerDescription</name>
     <message>
-        <location filename="../qml/pages/BeerDescription.qml" line="59"/>
+        <location filename="../qml/pages/BeerDescription.qml" line="48"/>
+        <source>Please check API_Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/BeerDescription.qml" line="52"/>
+        <source>Something wrong to get the XML data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/BeerDescription.qml" line="139"/>
         <source>Beer&apos;s Information</source>
         <translation type="unfinished"></translation>
     </message>
@@ -71,27 +81,27 @@
 <context>
     <name>SearchResults</name>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="77"/>
+        <location filename="../qml/pages/SearchResults.qml" line="78"/>
         <source>Please check API_Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="81"/>
+        <location filename="../qml/pages/SearchResults.qml" line="82"/>
         <source>Something wrong to get the XML data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="97"/>
+        <location filename="../qml/pages/SearchResults.qml" line="98"/>
         <source>Page: %1/%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="102"/>
+        <location filename="../qml/pages/SearchResults.qml" line="103"/>
         <source>Previous Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchResults.qml" line="118"/>
+        <location filename="../qml/pages/SearchResults.qml" line="119"/>
         <source>Next Page</source>
         <translation type="unfinished"></translation>
     </message>

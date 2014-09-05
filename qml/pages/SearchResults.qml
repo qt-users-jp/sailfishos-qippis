@@ -53,6 +53,7 @@ Page {
         XmlRole { name: "styleName"; query: "style/name/string()" }
         XmlRole { name: "categoryId"; query: "style/category/id/string()" }
         XmlRole { name: "categoryName"; query: "style/category/string()" }
+        XmlRole { name: "breweryId"; query: "breweries/item/id/string()" }
         XmlRole { name: "breweryName"; query: "breweries/item/name/string()" }
     }
 
@@ -186,7 +187,9 @@ Page {
                                           categoryName: categoryName,
                                           styleName: styleName,
                                           breweryName: breweryName,
-                                          apiKey: apiKey
+                                          breweryId: breweryId,
+                                          categoryId: categoryId,
+                                          styleId: styleId
                                       })
         }
         VerticalScrollDecorator {}

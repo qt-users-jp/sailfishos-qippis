@@ -26,21 +26,34 @@ Page {
                 spacing: Theme.paddingLarge
                 Image {
                     id: iconImage
-                    width: 64
-                    height: 64
+                    width: 72
+                    height: 72
                     anchors.verticalCenter: parent.verticalCenter
-                    source: favorite.getIcon(favorite.getId(index)) ? favorite.getIcon(favorite.getId(index)) : "../images/noImage.jpg"
+                    source: favorite.getIcon(favorite.getId(index)) ? favorite.getIcon(favorite.getId(index)) : "../images/noImage.png"
                     BusyIndicator {
                         anchors.centerIn: parent
                         running: iconImage.status == Image.Loading
                     }
                 }
-                Text {
-                    font.pixelSize: Theme.fontSizeLarge
-                    anchors.verticalCenter: parent.verticalCenter
-                    color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
-                    textFormat: Text.RichText
-                    text: favorite.getName(favorite.getId(index))
+                Column {
+                    id: names
+                    width: page.width - iconImage.width
+                    height: iconImage.height
+                    Text {
+                        id: beer
+                        height: names.height - brewery.height
+                        font.pixelSize: Theme.fontSizeLarge
+                        textFormat: Text.RichText
+                        text: favorite.getName(favorite.getId(index))
+                        color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    }
+                    Text {
+                        id: brewery
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        textFormat: Text.RichText
+                        text: favorite.getBrewery(favorite.getId(index))
+                        color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    }
                 }
             }
             onClicked: pageStack.push(Qt.resolvedUrl("BeerDescription.qml"), {
@@ -54,6 +67,10 @@ Page {
                                           beerOg: favorite.getOg(favorite.getId(index)),
                                           categoryName: favorite.getCategory(favorite.getId(index)),
                                           styleName: favorite.getStyle(favorite.getId(index)),
+                                          breweryName: favorite.getBrewery(favorite.getId(index)),
+                                          categoryId: favorite.getCatId(favorite.getId(index)),
+                                          styleId: favorite.getStyId(favorite.getId(index)),
+                                          breweryId: favorite.getBrewId(favorite.getId(index))
                                       })
         }
     }
