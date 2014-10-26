@@ -52,7 +52,7 @@ Page {
         XmlRole { name: "styleId"; query: "style/id/string()" }
         XmlRole { name: "styleName"; query: "style/name/string()" }
         XmlRole { name: "categoryId"; query: "style/category/id/string()" }
-        XmlRole { name: "categoryName"; query: "style/category/string()" }
+        XmlRole { name: "categoryName"; query: "style/category/name/string()" }
         XmlRole { name: "breweryId"; query: "breweries/item/id/string()" }
         XmlRole { name: "breweryName"; query: "breweries/item/name/string()" }
     }
