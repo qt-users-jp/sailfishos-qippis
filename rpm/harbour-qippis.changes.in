@@ -8,6 +8,13 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Oct 28 2014 helicalgear <helicalgear@gmail.com> 0.0.3-1
+- Change the App's Icon.
+- Change the Icon for "NoImage".
+- Add brewery info on beer's information.
+- Add reload function of beer's information which saved on favorite list.
+- Fixed the bug that qippis sometime show the strange information on category-name in beer's information page.
+
 * Fri Aug 15 2014 helicalgear <helicalgear@gmail.com> 0.0.2-1
 - Change repo url of twitter4qml from cr to git
 - make breweryDB url be opened by the default browser with tapping text
