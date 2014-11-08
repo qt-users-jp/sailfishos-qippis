@@ -27,12 +27,23 @@ Dialog {
         PullDownMenu {
             MenuItem {
                 visible: tweet._image === ""
-                text: "Add Image"
+                text: "Add Image (Gallery)"
                 onClicked: {
                     var imagePicker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
                     imagePicker.selectedContentChanged.connect(function() {
                         tweet._image = imagePicker.selectedContent;
                         tweet.media.push(_image.replace("file://",""));
+                    });
+                }
+            }
+            MenuItem {
+                visible: tweet._image === ""
+                text: "Add Image (Camera)"
+                onClicked: {
+                    var cameraPicker = pageStack.push(Qt.resolvedUrl("Camera.qml"));
+                    cameraPicker.tookPictureChanged.connect(function() {
+                        tweet._image = cameraPicker.tookPicture;
+                        tweet.media.push(_image);
                     });
                 }
             }
