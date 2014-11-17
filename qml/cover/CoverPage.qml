@@ -32,10 +32,16 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    Label {
-        id: label
+    Column {
         anchors.centerIn: parent
-        text: "qippis"
+        Image {
+            id: appIcon
+            source: "./qippis_cover.png"
+        }
+        Label {
+            id: label
+            text: "qippis"
+        }
     }
 
 //    CoverActionList {

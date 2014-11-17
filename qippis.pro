@@ -39,7 +39,8 @@ OTHER_FILES += \
     qml/pages/FavoritesList.qml \
     qml/pages/Authentication.qml \
     qml/pages/TweetBeer.qml \
-    qml/pages/Camera.qml
+    qml/pages/Camera.qml \
+    qml/cover/qippis_cover.png
 
 # to disable building translations every time, comment out the
 # following CONFIG line
