@@ -133,11 +133,40 @@ Page {
         Column {
             id: column
             x: Theme.paddingLarge
-            width: page.width - Theme.paddingLarge
+            width: page.width - ( Theme.paddingLarge * 2 )
+            spacing: Theme.paddingLarge
 
             PageHeader {
                 title: qsTr("Beer's Information")
             }
+
+            Row {
+                width: parent.width
+                IconButton {
+                    id: favStar
+                    anchors.verticalCenter: parent.verticalCenter
+                    icon.source: favorited ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
+                    onClicked: {
+                        if (favorited) {
+                            favorite.unset(beerId);
+                            favorited = false;
+                        } else {
+                            favorite.set(beerId, beerName, beerIcon, beerLabel, beerDescription, beerAbv, beerIbu, beerSrm, beerOg, categoryName, styleName, breweryName, breweryId, categoryId, styleId);
+                            favorited = true;
+                        }
+                    }
+                }
+                Label {
+                    width: parent.width - favStar.width
+                    anchors.verticalCenter: parent.verticalCenter
+                    textFormat: Text.RichText
+                    wrapMode: Text.WordWrap
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeExtraLarge
+                    text: beerName
+                }
+            }
+
             Row {
                 Image {
                     id: labelImage
@@ -212,31 +241,15 @@ Page {
             }
 
             Row {
+                width: parent.width
+                spacing: Theme.paddingLarge
                 Label {
-                    height: name.contentHeight
-                    width: column.width / 4
-                    text: "Name: "
-                }
-                Text {
-                    id: name
-                    width: column.width * 3 / 4
-                    horizontalAlignment: Text.AlignLeft
-                    text: beerName
-                    color: Theme.primaryColor
-                    textFormat: Text.RichText
-                    wrapMode: Text.WordWrap
-                }
-            }
-
-            Row {
-                Label {
-                    height: brewery.contentHeight
-                    width: column.width / 4
+                    width: parent.width / 4
                     text: "Brewery: "
                 }
                 Text {
                     id: brewery
-                    width: column.width * 3 / 4
+                    width: parent.width * 3 / 4
                     horizontalAlignment: Text.AlignLeft
                     text: breweryName
                     color: Theme.primaryColor
@@ -246,14 +259,15 @@ Page {
             }
 
             Row{
-                height: category.contentHeight
+                width: parent.width
+                spacing: Theme.paddingLarge
                 Label {
-                    width: column.width / 4
+                    width: parent.width / 4
                     text: "Category: "
                 }
                 Text {
                     id: category
-                    width: column.width * 3 / 4
+                    width: parent.width * 3 / 4
                     horizontalAlignment:  Text.AlignLeft
                     text: categoryName
                     color: Theme.primaryColor
@@ -263,13 +277,14 @@ Page {
             }
 
             Row {
-                height: beerSytle.contentHeight
+                width: parent.width
+                spacing: Theme.paddingLarge
                 Label {
                     width: column.width / 4
                     text: "Style: "
                 }
                 Text {
-                    id: beerSytle
+                    id: beerStyle
                     width: column.width * 3 / 4
                     horizontalAlignment: Text.AlignLeft
                     text: styleName
@@ -279,20 +294,21 @@ Page {
                 }
             }
 
-            Label {
-                width: column.width
-                text: "Description: "
+            Column {
+                Label {
+                    width: column.width
+                    text: "Description: "
+                }
+                Text {
+                    id: description
+                    height: description.contentHeight
+                    width: column.width
+                    color: Theme.primaryColor
+                    textFormat: Text.RichText
+                    wrapMode: Text.WordWrap
+                    text: beerDescription
+                }
             }
-            Text {
-                id: description
-                height: description.contentHeight
-                width: column.width
-                color: Theme.primaryColor
-                textFormat: Text.RichText
-                wrapMode: Text.WordWrap
-                text: beerDescription
-            }
-
         }
     }
 }

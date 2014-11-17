@@ -37,7 +37,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/BeerDescription.qml" line="139"/>
+        <location filename="../qml/pages/BeerDescription.qml" line="140"/>
         <source>Beer&apos;s Information</source>
         <translation type="unfinished"></translation>
     </message>
