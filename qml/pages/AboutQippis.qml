@@ -14,7 +14,7 @@ Page {
         width: parent.width
         height: about.contentHeight
         text: "Client of BrewerDB.com for SailfishOS<br>" +
-              "Version: 0.0.3 (Alpha)<br>" +
+              "Version: 0.0.4 (Alpha)<br>" +
               "<br>" +
               "Please visit <a href=\"http://helicalgear.blogspot.jp/p/qippis.html\">Qippis Info</a> if you need more information about this app.<br>" +
               "<br>" +
@@ -24,7 +24,8 @@ Page {
               "<br>" +
               "Special Thanks:<br>" +
               "@kenya888<br>" +
-              "@task_jp<br>"
+              "@task_jp<br>" +
+              "@YQK05016<br>"
         horizontalAlignment: Text.AlignHCenter
         color: Theme.primaryColor
         textFormat: Text.RichText
