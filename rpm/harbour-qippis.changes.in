@@ -8,6 +8,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Nov 18 2014 helicalgear <helicalgear@gmail.com> 0.0.4-2
+- Fix high power consumption bug.
+
 * Tue Nov 18 2014 helicalgear <helicalgear@gmail.com> 0.0.4-1
 - Add Camera function to attach the beer's photo to the tweet.
 - Change the layout of BeerDescriptionPage.
