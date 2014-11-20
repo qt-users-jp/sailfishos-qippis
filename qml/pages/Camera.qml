@@ -76,4 +76,9 @@ Page {
         }
     }
 
+    Connections {
+        target: Qt.application
+        onActiveChanged: Qt.application.active ? camera.start() : camera.stop()
+    }
+
 }
