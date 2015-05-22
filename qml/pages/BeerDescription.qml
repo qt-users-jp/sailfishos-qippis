@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.XmlListModel 2.0
 import Sailfish.Silica 1.0
+import harbour.qippis.Twitter4QML 1.1
 
 Page {
     id: page
@@ -30,6 +31,12 @@ Page {
     Storage {
         id: storage
         name: "SettingDB"
+    }
+
+    Status {
+        id: beerStatus
+        onPlain_textChanged: infoBar.show(plain_text)
+//        onId_strChanged: infoBar.show("Tweet Succeeded")
     }
 
     property bool favorited: favorite.getName(beerId) ? true : false
@@ -126,7 +133,12 @@ Page {
             }
             MenuItem {
                 text: "Tweet the Beer"
-                onClicked: pageStack.push(Qt.resolvedUrl("TweetBeer.qml"), {beerId: beerId, beerName: beerName})
+                onClicked: {
+                    var tweetBeer = pageStack.push(Qt.resolvedUrl("TweetBeer.qml"), {beerId: beerId, beerName: beerName});
+                    tweetBeer.parameterChanged.connect(function() {
+                        beerStatus.statusesUpdate(tweetBeer.parameter)
+                    });
+                }
             }
         }
 

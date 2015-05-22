@@ -27,17 +27,17 @@
 <context>
     <name>BeerDescription</name>
     <message>
-        <location filename="../qml/pages/BeerDescription.qml" line="48"/>
+        <location filename="../qml/pages/BeerDescription.qml" line="55"/>
         <source>Please check API_Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/BeerDescription.qml" line="52"/>
+        <location filename="../qml/pages/BeerDescription.qml" line="59"/>
         <source>Something wrong to get the XML data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/BeerDescription.qml" line="140"/>
+        <location filename="../qml/pages/BeerDescription.qml" line="152"/>
         <source>Beer&apos;s Information</source>
         <translation type="unfinished"></translation>
     </message>
@@ -111,6 +111,15 @@
     <message>
         <location filename="../qml/pages/StyleDescription.qml" line="32"/>
         <source>Style&apos;s Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-qippis</name>
+    <message>
+        <location filename="../qml/harbour-qippis.qml" line="96"/>
+        <source>Success:
+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

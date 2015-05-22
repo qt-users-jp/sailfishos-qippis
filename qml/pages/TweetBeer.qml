@@ -11,14 +11,12 @@ Dialog {
     property string _image: ""
     property var media: new Array
 
+    property var parameter
+
     Timer {
         running: tweet.status == PageStatus.Active && oauth.state !== OAuth.Authorized
         interval: 100
         onTriggered: pageStack.replace(Qt.resolvedUrl("Authentication.qml"))
-    }
-
-    Status {
-        id: beerStatus
     }
 
     SilicaFlickable {
@@ -99,8 +97,7 @@ Dialog {
 
     onDone: {
         if (result == DialogResult.Accepted) {
-            var parameter = {'status': tweetText.text, 'media': tweet.media};
-            beerStatus.statusesUpdate(parameter);
+            parameter = {'status': tweetText.text, 'media': tweet.media};
         }
     }
 

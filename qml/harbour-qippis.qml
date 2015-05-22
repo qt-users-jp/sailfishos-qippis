@@ -80,4 +80,38 @@ ApplicationWindow
         Component.onCompleted: oauth.completed = true
     }
 
+    Rectangle {
+        id: infoBar
+
+        width: parent.width
+        height: info.height
+        color: Theme.highlightBackgroundColor
+        radius: 2
+
+        opacity: 0.0
+
+        visible: opacity > 0.0
+
+        function show(text) {
+            info.text = qsTr("Success:\n") + text;
+            opacity = 0.9;
+            closeTimer.restart();
+        }
+
+        Label {
+            id: info
+            x: Theme.paddingLarge
+            width: parent.width - 2 * Theme.paddingLarge
+            height: contentHeight
+            color: Theme.secondaryColor
+            font.pixelSize: Theme.fontSizeSmall
+            wrapMode: Text.WrapAnywhere
+        }
+
+        Timer {
+            id: closeTimer
+            interval: 3000
+            onTriggered: infoBar.opacity = 0.0
+        }
+    }
 }
