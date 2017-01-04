@@ -33,6 +33,10 @@
 #endif
 
 #include <sailfishapp.h>
+#include <QGuiApplication>
+#include <QQuickView>
+#include <QQmlEngine>
+#include <QQmlContext>
 #include "twitter4qml.h"
 
 
@@ -48,6 +52,17 @@ int main(int argc, char *argv[])
     // To display the view, call "show()" (will show fullscreen on device).
 
     Twitter4QML twitter4qml;
-    return SailfishApp::main(argc, argv);
-}
 
+    QGuiApplication* app = SailfishApp::application(argc, argv);
+    QQuickView* view = SailfishApp::createView();
+
+    // Please add the option to qmake as below if you want to build the qippis at your own enviroment.
+    // KEY='consumer key' SECRET='consumer secret'
+    view->engine()->rootContext()->setContextProperty("consumerKey", QStringLiteral(CONSUMER_KEY));
+    view->engine()->rootContext()->setContextProperty("consumerSecret", QStringLiteral(CONSUMER_SECRET));
+
+    view->setSource(SailfishApp::pathTo("qml/harbour-qippis.qml"));
+    view->show();
+
+    return app->exec();
+}

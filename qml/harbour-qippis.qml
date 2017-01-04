@@ -53,8 +53,8 @@ ApplicationWindow
 
     OAuth {
         id: oauth
-        consumer_key: "kOFlNssuYl76Gb2z7xHIuepjC"
-        consumer_secret: "uKGyTAaOkpezry7qOuF3wtH0Q2I8fyv3IiFNp1Nkurx3NliAoP"
+        consumer_key: consumerKey
+        consumer_secret: consumerSecret
         token: storage.get('token')? storage.get('token'):""
         token_secret: storage.get('tokenSecret')? storage.get('tokenSecret'):""
         user_id: storage.get('userId')? storage.get('userId'):""

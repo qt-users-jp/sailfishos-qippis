@@ -49,3 +49,6 @@ CONFIG += sailfishapp_i18n
 HEADERS += \
     src/twitter4qml.h
 
+DEFINES += \
+    CONSUMER_KEY=\\\"$$KEY\\\" \
+    CONSUMER_SECRET=\\\"$$SECRET\\\"
